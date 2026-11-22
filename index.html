@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE OBSERVATORY — Interactive Antigravity Showcase</title>
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+<!-- ==================== FULL-BLEED INTERACTIVE STAGE ==================== -->
+<main id="stage">
+  <div id="blur" style="background-image:url('media/c01-hero.jpg')"></div>
+  <div id="still" style="background-image:url('media/c01-hero.jpg')"></div>
+  <video id="v-loop-a" class="reel on" src="media/c01-loop.mp4" poster="media/c01-hero.jpg" muted loop playsinline autoplay preload="auto"></video>
+  <video id="v-loop-b" class="reel" muted loop playsinline preload="auto"></video>
+  <video id="v-trans" class="reel" muted playsinline preload="auto"></video>
+
+  <!-- SLIDE 03 FULL-SCREEN 4 LIVING VEO 3.1 WORLDS LAYER -->
+  <div id="world-fullscreen" class="fs-layer">
+    <video id="sm-0" class="style-media active" src="media/style-a-felt.mp4" poster="media/style-a-felt.jpg" muted loop playsinline preload="auto"></video>
+    <video id="sm-1" class="style-media" src="media/style-b-ghibli.mp4" poster="media/style-b-ghibli.jpg" muted loop playsinline preload="auto"></video>
+    <video id="sm-2" class="style-media" src="media/style-c-cyber.mp4" poster="media/style-c-cyber.jpg" muted loop playsinline preload="auto"></video>
+    <video id="sm-3" class="style-media" src="media/style-d-lunar.mp4" poster="media/style-d-lunar.jpg" muted loop playsinline preload="auto"></video>
+  </div>
+
+  <!-- SLIDE 04 FULL-SCREEN SCROLL-SCRUBBED 3D PORTAL LAYER -->
+  <div id="scroll-fullscreen" class="fs-layer">
+    <video id="v-scrollworld" src="media/scrollworld-dive.mp4" poster="media/scrollworld-dive.jpg" muted playsinline preload="auto"></video>
+  </div>
+
+  <!-- SLIDE 05 FULL-SCREEN LIVE INTERACTIVE WEBGL2 3D GPU SHADER LAYER -->
+  <div id="gl-fullscreen" class="fs-layer">
+    <canvas id="gl-canvas"></canvas>
+  </div>
+</main>
+<div id="vig"></div>
+
+<!-- Top-Left Engraved Brass Plaque (<= 6 words) -->
+<header id="plaque" class="plaque on" aria-live="polite">
+  <div id="plaque-kicker" class="plaque-kicker">01 / 08 · CHARACTER-LOCKED VEO 3.1 CINEMA</div>
+  <h1 id="plaque-title" class="plaque-title">One Guide. <em>Filmed Live.</em></h1>
+</header>
+
+<!-- Top-Right 8-Chamber Progress Beads -->
+<div id="chamber-rail" class="chamber-rail" aria-label="Chamber index"></div>
+<div id="flight-badge">CONTINUOUS VEO 3.1 ONE-TAKE WALK</div>
+
+<!-- ==================== ULTRA-CLEAN ON-STAGE INTERACTIVE WORKSPACES ==================== -->
+<section id="stage-deck" class="stage-deck on" aria-label="Live Interactive Capability Stage">
+
+  <!-- ==================== SLIDE 01: CHARACTER & VEO 3.1 CINEMA ENGINE ==================== -->
+  <div class="s-card s-card-bar active" id="scard-0">
+    <div class="c01-bar">
+      <div class="c01-thumb">
+        <img src="media/lumen-ref.jpg" alt="Locked Character Reference">
+        <div>
+          <span class="mini-tag">LOCKED CHARACTER PLATE</span>
+          <strong>Lumen Reference</strong>
+        </div>
+      </div>
+      <span class="sep"></span>
+      <div class="c01-pills">
+        <button class="b-btn on" data-veo-src="media/c01-loop.mp4" data-veo-poster="media/c01-hero.jpg">▶ 01 Rotunda Loop</button>
+        <button class="b-btn" data-veo-src="media/c01-to-c02.mp4" data-veo-poster="media/c01-hero.jpg">▶ Walk 01 → 02</button>
+        <button class="b-btn" data-veo-src="media/c03-to-c04.mp4" data-veo-poster="media/c03-hero.jpg">▶ Walk 03 → 04</button>
+        <button class="b-btn" data-veo-src="media/c07-to-c08.mp4" data-veo-poster="media/c07-hero.jpg">▶ Walk 07 → 08</button>
+      </div>
+      <span class="sep"></span>
+      <button class="b-btn primary copy-btn" data-prompt-key="deck">Copy World Prompt</button>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 02: LIVE 3-TRACK AI MUSIC STUDIO ==================== -->
+  <div class="s-card s-card-mid" id="scard-1">
+    <div class="audio-tracks">
+      <button id="trk-lyria" class="track-card active">
+        <span class="track-badge">GOOGLE LYRIA 002 · ORCHESTRAL</span>
+        <span class="track-name">▶ Observatory Overture</span>
+        <span class="track-meta">Felt piano, cello &amp; brass · −16 LUFS</span>
+      </button>
+      <button id="trk-lyria-elec" class="track-card">
+        <span class="track-badge">GOOGLE LYRIA 002 · ELECTRONIC</span>
+        <span class="track-name">▶ Midnight Telemetry</span>
+        <span class="track-meta">Modular synth &amp; glass marimba · 112 BPM</span>
+      </button>
+      <button id="trk-acestep" class="track-card">
+        <span class="track-badge">LOCAL MAC GPU · ACE-STEP 1.5</span>
+        <span class="track-name">▶ Clockwork Cello &amp; Synth</span>
+        <span class="track-meta">Offline Apple Silicon GPU · 100 BPM</span>
+      </button>
+    </div>
+
+    <div class="wave-deck">
+      <div class="wave-top">
+        <div class="wave-controls">
+          <button id="btn-play-trk" class="b-btn primary">▶ Play Track</button>
+          <span id="wave-clock" class="wave-time">0:00 / 0:33</span>
+          <label class="vol-wrap"><span>VOL</span><input id="vol-slider" type="range" min="0" max="1" step="0.02" value="0.86" /></label>
+        </div>
+        <button class="b-btn copy-btn" data-prompt-key="music">Copy Music Prompt</button>
+      </div>
+      <canvas id="wave-canvas"></canvas>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 03: FOUR LIVING VEO 3.1 WORLDS ==================== -->
+  <div class="s-card s-card-mid" id="scard-2">
+    <div class="world-grid-4">
+      <button class="world-card active" data-style="0">
+        <img src="media/style-a-felt.jpg" alt="World 1 Stop-Motion Felt and Clay">
+        <div class="world-card-body">
+          <span class="w-badge">WORLD 01 · LIVE 1080P FILM</span>
+          <strong>Stop-Motion Felt &amp; Clay</strong>
+        </div>
+      </button>
+
+      <button class="world-card" data-style="1">
+        <img src="media/style-b-ghibli.jpg" alt="World 2 Hand-Painted Watercolor Conservatory">
+        <div class="world-card-body">
+          <span class="w-badge">WORLD 02 · LIVE 1080P FILM</span>
+          <strong>Gouache Conservatory</strong>
+        </div>
+      </button>
+
+      <button class="world-card" data-style="2">
+        <img src="media/style-c-cyber.jpg" alt="World 3 Rain-Slicked Neon Tokyo Alley">
+        <div class="world-card-body">
+          <span class="w-badge">WORLD 03 · LIVE 1080P FILM</span>
+          <strong>Neon Tokyo Rain</strong>
+        </div>
+      </button>
+
+      <button class="world-card" data-style="3">
+        <img src="media/style-d-lunar.jpg" alt="World 4 1969 Apollo Lunar Observatory">
+        <div class="world-card-body">
+          <span class="w-badge">WORLD 04 · LIVE 1080P FILM</span>
+          <strong>Apollo Lunar Dome</strong>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 04: SCRUB THROUGH INFINITY (FULL-SCREEN WHEEL & SLIDER) ==================== -->
+  <div class="s-card s-card-bar" id="scard-3">
+    <div class="scrub-bar-row">
+      <span class="tele-pill" id="sw-hud">DEPTH 18%</span>
+      <span class="tele-pill" id="sw-frame-pill">FRAME 044 / 240</span>
+      <input id="sw-range" type="range" min="0" max="1" step="0.001" value="0.18" aria-label="Scrub 3D portal flight depth" />
+      <button class="b-btn dj-btn" data-depth="0">Gate</button>
+      <button class="b-btn dj-btn" data-depth="0.35">Gears</button>
+      <button class="b-btn dj-btn" data-depth="0.70">Core</button>
+      <button class="b-btn dj-btn" data-depth="0.98">Horizon</button>
+      <button id="sw-auto" class="b-btn primary">▶ Auto-Fly</button>
+      <button class="b-btn copy-btn" data-prompt-key="scroll">Copy Prompt</button>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 05: LIVE INTERACTIVE WEBGL2 3D GPU SHADER ==================== -->
+  <div class="s-card s-card-bar" id="scard-4">
+    <div class="gl-bar">
+      <span class="tele-pill" id="gl-hud">DRAG TO ORBIT 3D · 60 FPS GPU</span>
+      <button class="b-btn on" data-gl-mat="0">1. Gargantua Black Hole</button>
+      <button class="b-btn" data-gl-mat="1">2. Quantum Fractal Vault</button>
+      <button class="b-btn" data-gl-mat="2">3. Dyson Chrono-Orrery</button>
+      <span class="sep"></span>
+      <label class="gl-slider">ENERGY <input id="gl-twist" type="range" min="0.2" max="1.6" step="0.02" value="0.9"></label>
+      <label class="gl-slider">LENS <input id="gl-chroma" type="range" min="0" max="1" step="0.02" value="0.6"></label>
+      <button class="b-btn primary copy-btn" data-prompt-key="shader">Copy Shader Prompt</button>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 06: CINEMA COMPILED FROM CODE (NO RAW SOURCE CODE BOMB) ==================== -->
+  <div class="s-card s-card-cinema" id="scard-5">
+    <div class="cinema-player-wrap">
+      <video id="v-hyper" src="media/hyperframes-demo.mp4?v=5" muted loop playsinline autoplay controls preload="auto"></video>
+    </div>
+    <div class="cinema-bar">
+      <div class="c06-chapters">
+        <button class="b-btn on" data-hseek="0.2">01 · Tracked EEG Ribbon</button>
+        <button class="b-btn" data-hseek="3.2">02 · 3-World Triptych</button>
+        <button class="b-btn" data-hseek="6.2">03 · Audio Polar Spectrum</button>
+        <button class="b-btn" data-hseek="9.2">04 · Editorial Resolve</button>
+        <button class="b-btn" id="h-step-back">◀ −1f</button>
+        <button class="b-btn" id="h-step-fwd">+1f ▶</button>
+      </div>
+      <div class="c06-actions">
+        <button id="btn-hyper-mute" class="b-btn">🔊 Unmute Score</button>
+        <button class="b-btn primary copy-btn" data-prompt-key="hyperframes">Copy Video Prompt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 07: AUTONOMOUS BROWSER QA (CLEAN VISUAL EVIDENCE) ==================== -->
+  <div class="s-card s-card-cinema" id="scard-6">
+    <div class="qa-top-bar">
+      <div class="qa-tabs">
+        <button class="b-btn primary" data-qatab="reel">1. Live Browser QA Reel</button>
+        <button class="b-btn" data-qatab="feet">2. 7-Transition Frame Audit</button>
+        <button class="b-btn" data-qatab="viewports">3. Desktop vs 390px Mobile</button>
+      </div>
+      <div class="qa-badges">
+        <span class="pass-pill">✓ 0 Console Errors</span>
+        <span class="pass-pill">✓ 7/7 Continuous Walks</span>
+        <button class="b-btn primary copy-btn" data-prompt-key="qa">Copy QA Prompt</button>
+      </div>
+    </div>
+
+    <div class="qa-view active" id="qaview-reel">
+      <div class="cinema-player-wrap">
+        <video id="v-qa" src="media/browser-qa-reel.mp4" muted loop playsinline autoplay controls preload="auto"></video>
+      </div>
+    </div>
+
+    <div class="qa-view" id="qaview-feet">
+      <div class="qa-img-panel">
+        <img src="media/feetstrips-all-7.jpg" alt="7-transition frame-by-frame contact sheet">
+      </div>
+    </div>
+
+    <div class="qa-view" id="qaview-viewports">
+      <div class="qa-vp-grid">
+        <div class="qa-vp-card"><img src="media/desktop-c1.png" alt="Desktop 1440x900"><span>Desktop 1440×900</span></div>
+        <div class="qa-vp-card"><img src="media/desktop-c5-webgl.png" alt="WebGL2 GPU Capture"><span>WebGL2 60fps Shader</span></div>
+        <div class="qa-vp-card"><img src="media/mobile-c1.png" alt="Mobile 390x844"><span>Mobile 390×844 Portrait</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 08: GENERALIZED ONE-CLICK MASTER PROMPTS ==================== -->
+  <div class="s-card s-card-bento" id="scard-7">
+    <div class="bento-head">
+      <div>
+        <span class="s-eyebrow">ONE-CLICK MASTER PROMPTS · WORKS ON ANY ACCOUNT (INTERVIEWS YOU FIRST → BUILDS PILOT → VERIFIES LIVE)</span>
+        <h2 class="s-heading">Pick Any Capability Below to Copy Its Self-Contained Kickoff Prompt</h2>
+      </div>
+    </div>
+
+    <div class="bento-grid-6">
+      <div class="bento-card">
+        <div class="bento-meta">01 · FILMED INTERACTIVE DECK</div>
+        <h3>Cinematic World Deck</h3>
+        <p>Interviews you on world aesthetic &amp; guide character, films seamless room loops + camera walks, and builds a live interactive stage.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="deck">Copy Deck Prompt</button>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-meta">02 · HYPERFRAMES / CODE-TO-MP4</div>
+        <h3>Code-Compiled Motion Video</h3>
+        <p>Interviews you on footage, data overlays &amp; pacing, then compiles a 1080p film with tracked per-pixel glow, clean typography &amp; synced audio.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="hyperframes">Copy Video Prompt</button>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-meta">03 · AI SCORE &amp; SOUND DESIGN</div>
+        <h3>Multi-Track Audio Studio</h3>
+        <p>Interviews you on instrumentation, BPM &amp; mood, generates &amp; masters stereo tracks to −16 LUFS, and wires live waveform scrubbing.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="music">Copy Music Prompt</button>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-meta">04 · REAL-TIME WEBGL2 / GLSL</div>
+        <h3>Interactive 3D GPU Shader</h3>
+        <p>Interviews you on 3D physics &amp; lighting, then builds a 60fps raymarched WebGL2 canvas with smooth inertia orbit &amp; live shader controls.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="shader">Copy Shader Prompt</button>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-meta">05 · SCROLL-DRIVEN 3D CAMERA</div>
+        <h3>Scroll-Scrubbed Video Portal</h3>
+        <p>Interviews you on camera path &amp; depth stops, encodes a GOP-8 first-person flight, and preloads an in-memory Blob for 60fps wheel scrubbing.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="scroll">Copy Scroll Prompt</button>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-meta">06 · AUTONOMOUS BROWSER QA</div>
+        <h3>Live Playwright &amp; Critic Gate</h3>
+        <p>Spins up a local server, tests every button across desktop &amp; 390px mobile, audits transition frame strips, and fixes bugs until 0 errors.</p>
+        <button class="b-btn primary copy-btn" data-prompt-key="qa">Copy QA Prompt</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Bottom Brass Instrument Bar -->
+<div class="dock" role="toolbar" aria-label="Observatory controls">
+  <span class="chamber-tag"><strong id="hud-num">01</strong> / 08 · <span id="hud-name">VEO 3.1 CINEMA</span></span>
+  <span class="sep"></span>
+  <button id="btn-inspect" class="b-btn on" title="Toggle Stage Controls (D)">Controls (D)</button>
+  <button id="btn-score" class="b-btn"><span class="pulse-dot"></span><span id="score-lbl">♪ Music (M)</span></button>
+  <button id="btn-grid" class="b-btn">Map (G)</button>
+  <button id="btn-notes" class="b-btn">Notes (N)</button>
+  <button id="btn-still" class="b-btn">Still (R)</button>
+</div>
+
+<nav class="nav-rail" aria-label="Chamber navigation">
+  <button id="btn-prev" class="nav-btn" aria-label="Previous chamber" disabled>←</button>
+  <button id="btn-next" class="nav-btn" aria-label="Next chamber">→</button>
+</nav>
+
+<!-- Speaker Notes Drawer (N) -->
+<aside id="notes" aria-label="Presenter speaker notes">
+  <div id="notes-head">
+    <span id="notes-title">CHAMBER 01 · THE ROTUNDA</span>
+    <span style="color:var(--muted)">ESC / N TO CLOSE</span>
+  </div>
+  <p id="notes-text"></p>
+</aside>
+
+<!-- Overview Lightbox Map (G) -->
+<div id="overview" role="dialog" aria-modal="true" aria-label="All 8 Chambers">
+  <div class="ov-head">
+    <div>
+      <div class="plate-eyebrow">THE OBSERVATORY · 8 LIVE INTERACTIVE CAPABILITIES</div>
+      <h2 class="plate-title">Jump Directly to Any Capability Slide</h2>
+    </div>
+    <button id="ov-close" class="b-btn">Close (ESC)</button>
+  </div>
+  <div id="ov-grid" class="ov-grid"></div>
+</div>
+
+<!-- Real Mastered Audible Stereo MP3s (-16 LUFS) -->
+<audio id="aud-lyria" src="media/lyria-observatory.mp3" loop preload="auto"></audio>
+<audio id="aud-lyria_elec" src="media/lyria-electronic.mp3" loop preload="auto"></audio>
+<audio id="aud-acestep" src="media/acestep-foundry.mp3" loop preload="auto"></audio>
+
+<script src="app.js?v=7"></script>
+</body>
+</html>
